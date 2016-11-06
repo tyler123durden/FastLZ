@@ -300,7 +300,7 @@ int unpack_file(const char* input_file)
       }
     }
 
-    if((chunk_id == 17) && f && output_file && decompressed_size)
+    if((chunk_id == 17) && f && output_file)
     {
       unsigned long remaining;
 
@@ -399,16 +399,18 @@ int unpack_file(const char* input_file)
       if(f)
       {
         int last_percent = (int)percent;
-        if(decompressed_size < (1<<24))
-          percent = total_extracted * 100 / decompressed_size;
-        else
-          percent = total_extracted / 256 * 100 / (decompressed_size >>8);
-        percent >>= 1;
-        while(last_percent < (int)percent)
-        {
-          printf("#");
-          last_percent++;
-        }
+		if(decompressed_size) {
+			if(decompressed_size < (1<<24))
+			  percent = total_extracted * 100 / decompressed_size;
+			else
+			  percent = total_extracted / 256 * 100 / (decompressed_size >>8);
+			percent >>= 1;
+			while(last_percent < (int)percent)
+			{
+			  printf("#");
+			  last_percent++;
+			}
+		}
       }
     }
 
