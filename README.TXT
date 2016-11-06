@@ -1,3 +1,6 @@
+Added c++ DLL for 6pack and 6unpack
+Also added 2 c# console applications for usage under window, should also work under Linux but native c version would be easier. 
+
 FastLZ - lightning-fast lossless compression library
 
 Author: Ariya Hidayat
